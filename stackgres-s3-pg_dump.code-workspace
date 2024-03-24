@@ -3,5 +3,10 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"settings": {
+		"terminal.integrated.env.linux": {
+			"LOCAL_WORKSPACE_FOLDER": "${workspaceFolder}"
+		}
+	}
 }
