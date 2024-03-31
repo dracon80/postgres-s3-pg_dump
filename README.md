@@ -1,9 +1,9 @@
 # Postgres S3 pg_dump Container
 
-This is a simply docker image containing the aws-cli and pg_dump 16.2. It is designed to create a directory format pg_dump of a named database, along with a dump of the globals database. The backups are combined into a single TAR and encrupted using aespipe and a signle key.
+This is a simple docker image containing the aws-cli and pg_dump 16.2. It is designed to create a directory formated pg_dump of a database, along with a dump of the globals database. The backups are then combined into a single TAR and encrypted using aespipe.
 
 ## Configuration
-To configure the image to communicat with the Database engine and Amazon S3 the following files and environment variables need to be supplied to the image.
+To configure the image to communicate with the Database engine and Amazon S3 the following files and environment variables need to be supplied to the image.
 
 ### Environment Variables
 
