@@ -26,7 +26,7 @@ RUN echo "Types: deb" > /etc/apt/sources.list.d/postgresql.sources && \
 FROM debian:bookworm as postgresql-s3-backup
 
 #install basic requirements
-RUN apt-get update && apt-get install mandoc less ca-certificates unzip aespipe -y
+RUN apt-get update && apt-get install mandoc less ca-certificates unzip tar aespipe -y
 
 COPY --from=installer /usr/local/aws-cli/ /usr/local/aws-cli/
 COPY --from=installer /aws-cli-bin/ /usr/local/bin/
@@ -40,6 +40,6 @@ RUN apt-get update && apt-get install postgresql-client-16 -y
 RUN useradd s3backup -d /backup -s /bin/nologin
 USER s3backup:s3backup
 WORKDIR /backup
-RUN touch .pgpass && chmod 0600 .pgpass
+COPY --chown=s3backup:s3backup --chmod=0550 ../postgres-s3-pg_dump/entrypoint.sh /backup/
 
-#ENTRYPOINT ["/usr/local/bin/aws"]
+#ENTRYPOINT ["/backup/entrypoint.sh"]

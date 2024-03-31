@@ -21,7 +21,7 @@ _releaser:
 
 _debuger:
 	docker run -it --rm --entrypoint="/bin/bash" \
-		--env-file ${LOCAL_WORKSPACE_FOLDER}/.secrets/.aws.env \
+		--env-file ${LOCAL_WORKSPACE_FOLDER}/.secrets/.env \
 		--mount type=bind,source=${LOCAL_WORKSPACE_FOLDER}/.secrets/.pgpass,target=/backup/.pgpass,readonly \
 		--mount type=bind,source=${LOCAL_WORKSPACE_FOLDER}/.secrets/encrypt.key,target=/backup/encrypt.key,readonly \
 		--network postgres_default \
